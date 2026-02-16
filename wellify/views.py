@@ -1,4 +1,6 @@
-from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
 
-def home(request):
-    return HttpResponse("Hello! My first Django App is working 🎉")
+@login_required
+def student_dashboard(request):
+    return render(request, 'student/dashboard.html')

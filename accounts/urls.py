@@ -1,8 +1,10 @@
 from django.urls import path
-from .views import user_login, register_view, home_redirect
 
+from adminpanel import views
+from .views import login_view, register_view, logout_view
+app_name = 'accounts'
 urlpatterns = [
-    path('', home_redirect, name='home'),
-    path('login/', user_login, name='login'),
+    path('login/', login_view, name='login'),
+     path('logout/', logout_view, name='logout'),
     path('register/', register_view, name='register'),
 ]

@@ -1,9 +1,8 @@
-from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseForbidden
+from django.shortcuts import render, redirect
 
-@login_required
+@login_required(login_url='accounts:login')
 def admin_dashboard(request):
-    if request.user.role != "admin":
-        return HttpResponseForbidden("Access Denied")
-    return render(request, "adminpanel/dashboard.html")
+    if request.user.role != 'admin':
+        return redirect('accounts:login')
+    return render(request, 'adminpanel/dashboard.html')
